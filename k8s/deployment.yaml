@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-foundations-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-foundations-demo
+  template:
+    metadata:
+      labels:
+        app: devops-foundations-demo
+    spec:
+      containers:
+        - name: app
+          image: ghcr.io/piravienfive/THAMBIDO:latest
+          ports:
+            - containerPort: 5000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
