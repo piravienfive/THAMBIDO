@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: devops-foundations-demo
+  description: Demo service showcasing containerisation and CI/CD
+  tags:
+    - devops
+    - platform
+    - ci-cd
+spec:
+  type: service
+  lifecycle: experimental
+  owner: platform-team
+  system: internal-platform
